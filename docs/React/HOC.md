@@ -51,7 +51,7 @@ class ItemList extends React.Component {
   }
 }
 ```
-当光标在屏幕上移动时，组件在 `<p>` 中显示其坐标。
+
 
 ### 新需求
 现在又来了一个需求，我们需要一个 订单 List 组件，它订阅外部数据源，用以渲染订单列表：
@@ -184,7 +184,10 @@ const ItemList = withDataSource(ItemList,DataSource.getItems);
 当渲染 ItemList 时， withDataSource 将传递一个 data prop，其中包含从 DataSource.getItems 检索到的最新商品
 
 #### 订单列表
-```const ItemList = withDataSource(List,DataSource.getItem);```
+```js
+const ItemList = withDataSource(List,DataSource.getItem);
+```
+
 ```jsx harmony
 class List extends React.Component {
   constructor(props){
