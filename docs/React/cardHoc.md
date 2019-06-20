@@ -1,14 +1,10 @@
 ## 简介
 将弹出式卡片封装成高阶组件，应对不同的场景需求，只需传入不同的内容组件，不需要弹窗的弹出关闭以及键盘高度适配等问题。
-<div align=center>
-<img src="/docs/img/card1.jpg" width = "300" />
-<p>组件弹出</p>
-<br/>
-</div>
-<div align=center>
-<img src="/docs/img/card2.jpg" width = "300" />
-<p>呼出键盘自适应高度</p>
-</div>
+
+<Picture src="card1.jpg" name="组件弹出" width = "300"/>
+
+<Picture src="card2.jpg" name="呼出键盘自适应高度" width = "300"/>
+
 ## 调用方式
 
 ```javascript

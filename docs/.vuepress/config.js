@@ -30,14 +30,14 @@ module.exports = {
     sidebarDepth: 2,
     sidebar: {
       '/React/': [
-        ['Animated', 'React动画指南'],
-        ['ActionSheet', '动作菜单组件的封装'],
-        ['Dialog', '动态弹窗'],
         ['TabBar', '导航栏组件'],
+        ['Dialog', '动态弹窗'],
+        ['ActionSheet', '动作菜单组件'],
+        ['Animated', 'ReactNative动画指南'],
         ['titleWrapper', '简单实用的高阶组件'],
         ['closeKeyBoard', 'QAP自动关闭键盘'],
-        ['heightProvider', '动态组件自适应键盘高度'],
-        ['listView', 'ListView长列表封装'],
+        ['heightProvider', '组件样式响应键盘高度'],
+        ['listView', 'ListView长列表'],
         ['cardHoc', '卡片弹窗HOC'],
         ['context', 'IOS高级功能控制']
       ],
@@ -60,24 +60,5 @@ module.exports = {
             'about'    /!* /about.html *!/*/
       ]
     }
-
-    /**
-     * 侧边栏分组
-     */
-    /*[
-      {
-        title: '笔记',
-        collapsable: true,//侧边栏的每个子组默认是可折叠的，你可以设置 collapsable: false 来让一个组永远都是展开状态。
-        children: [
-          ['/Notes/publish/','发布宝贝']
-        ]
-      },
-      {
-        title: 'React相关',
-        children: [
-
-				]
-      }
-    ],*/
   }
 }

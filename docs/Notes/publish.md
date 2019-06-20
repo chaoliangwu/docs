@@ -2,12 +2,7 @@
 最近刚刚完成了前端的发布宝贝实现，在这里做一个梳理总结
 <!-- more -->
 ## 主界面
-<p align="center">
-    <img src="/docs/img/itemAdd/main.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>主界面</em>
-    </p>
-</p>
+<Picture src="itemAdd/main.png" name="主界面" width="300" />
 
 主界面作为整个模块的核心页面，承载所有子页面的数据收集，数据处理以及最终的数据拼接
 
@@ -163,18 +158,9 @@
 
 ---
 ## 宝贝主图
-<p align="center">
-    <img src="/docs/img/itemAdd/main2.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>宝贝主图</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/main3.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>宝贝主图2</em>
-    </p>
-</p>
+<Picture src="itemAdd/main2.png" name="宝贝主图" width="300" />
+
+<Picture src="itemAdd/main3.png" name="宝贝主图2" width="300" />
 
 **这里复用了林立全的主图拖拽排序组件**
 
@@ -245,24 +231,11 @@ async upload (photos, cat_id) {
 ---
 
 ## 类目选择器`category`
-<p align="center">
-    <img src="/docs/img/itemAdd/category.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>级联选择</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/category2.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>最近使用</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/category3.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>搜索</em>
-    </p>
-</p>
+<Picture src="itemAdd/category.png" name="级联选择" width="300" />
+
+<Picture src="itemAdd/category2.png" name="最近使用" width="300" />
+
+<Picture src="itemAdd/category3.png" name="搜索" width="300" />
 
 > 类目选选择器写成了一个弹窗式的组件，支持历史记录缓存，模糊查询。
 
@@ -277,13 +250,7 @@ async upload (photos, cat_id) {
 ---
 
 ## 宝贝描述
-
-<p align="center">
-    <img src="/docs/img/itemAdd/desc.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>宝贝描述</em>
-    </p>
-</p>
+<Picture src="itemAdd/desc.png" name="宝贝描述" width="300" />
 
 这个地方没啥好说的，主要难点就是`QNUI`的多行输入框必须固定尺寸或者行数，没法根据文本长度自动撑开，和`pc`端不同的是，又没办法获取`dom`元素的尺寸，所以只能自己计算(有一定的偏差)
 
@@ -318,31 +285,10 @@ onInput={(e)=>{
 ---
 ## [宝贝属性](/Notes/goodsProps.html)
 
-<p align="center">
-    <img src="/docs/img/itemAdd/props.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>宝贝属性</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/props2.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>枚举属性</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/props3.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>普通度量衡</em>
-    </p>
-</p>
-
-<p align="center">
-    <img src="/docs/img/itemAdd/props4.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>时间度量衡</em>
-    </p>
-</p>
+<Picture src="itemAdd/props.png" name="宝贝属性" width="300" />
+<Picture src="itemAdd/props2.png" name="枚举属性" width="300" />
+<Picture src="itemAdd/props3.png" name="普通度量衡" width="300" />
+<Picture src="itemAdd/props4.png" name="时间度量衡" width="300" />
 
 - 调用接口`taobao.itemprops.get`获取该类目下的所有属性，大致分为4类
     1. **枚举属性**，使用选择器进行选择，结果拼入`props`字段
@@ -356,24 +302,9 @@ onInput={(e)=>{
 
 ## 宝贝规格（销售属性）
 
-<p align="center">
-    <img src="/docs/img/itemAdd/sku.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>sku</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/sku2.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>普通度量衡</em>
-    </p>
-</p>
-<p align="center">
-    <img src="/docs/img/itemAdd/sku3.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>备注</em>
-    </p>
-</p>
+<Picture src="itemAdd/sku.png" name="sku" width="300" />
+<Picture src="itemAdd/sku2.png" name="普通度量衡" width="300" />
+<Picture src="itemAdd/sku3.png" name="备注" width="300" />
 
 1. 这里属性的处理逻辑和宝贝属性差不多，调用接口`taobao.itemprops.get`获取该类目下的销售属性`is_sale_prop===true`
 
@@ -392,13 +323,7 @@ onInput={(e)=>{
 --- 
 
 ## 运费模板
-
-<p align="center">
-    <img src="/docs/img/itemAdd/postFee.png" alt="Sample"  width="300">
-    <p align="center">
-        <em>运费模板</em>
-    </p>
-</p>
+<Picture src="itemAdd/postFee.png" name="运费模板" width="300" />
 
 **这里复用了林立全的运费模板组件**
 

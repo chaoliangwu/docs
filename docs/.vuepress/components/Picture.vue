@@ -1,6 +1,6 @@
 <template>
   <div id="Picture" class="pic-container">
-    <img @click="imgShow" :src="path"/>
+    <img @click="imgShow" :src="path" :style="{width:width+'px'}" />
     <p>{{name}}</p>
   </div>
 </template>
@@ -8,10 +8,10 @@
 <script>
   export default {
     name: "Picture",
-    props:['src','name'],
+    props:['src','name','width'],
     computed:{
       path(){
-        return '/docs/img/'+this.src
+        return /^http/.test(this.src)?this.src:`/docs/img/${this.src}`;
       }
     },
     methods:{
@@ -29,7 +29,7 @@
         }
         const destory = () =>{
           wrapper.removeEventListener('click',clickListener);
-          window.removeEventListener('scroll',scrollListener)
+          window.removeEventListener('scroll',scrollListener);
           wrapper.style.opacity = '0';
           setTimeout(()=>{
             app.removeChild(wrapper);
@@ -53,6 +53,7 @@
 
 <style>
 .pic-container{
+  margin-top: 20px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -79,10 +80,10 @@
     align-items: center;
     background-color: rgba(0,0,0,0.5);
     opacity: 0;
-    transition: opacity .5s;
-    -moz-transition: opacity .5s;	/* Firefox 4 */
-    -webkit-transition: opacity .5s;	/* Safari 和 Chrome */
-    -o-transition: opacity .5s;	/* Opera */
+    transition: opacity .3s;
+    -moz-transition: opacity .3s;	/* Firefox 4 */
+    -webkit-transition: opacity .3s;	/* Safari 和 Chrome */
+    -o-transition: opacity .3s;	/* Opera */
   }
   .img-content{
     max-width: 80%;

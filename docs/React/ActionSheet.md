@@ -2,10 +2,7 @@
 
 最近用到一个动作菜单，由于nuke自带的样式不符合项目的统一样式规范，所以自己抽了一个出来，关键代码是动态向body插入子元素以及transition效果的实现。选项过多超过一屏后显示滚动列表，高度响应qap安卓键盘呼出关闭。
 
-<div align=center>
-<img src="/docs/img/actionsheet.jpg" width = "300" />
-<p>组件弹出</p>
-</div>
+<Picture src="actionsheet.jpg" name="组件弹出" width = "300"/>
 
 ## 调用示例
 

@@ -1,10 +1,8 @@
 ## 介绍
 适用于千牛移动端侧导航栏组件
 ## 效果图
-<div align=center>
-<img src="/docs/img/tabbar.jpg" width = "300" />
-<p>组件弹出</p>
-</div>
+<Picture src="tabbar.jpg" name="组件弹出" width = "300"/>
+
 ## 调用示例
 
 ### `View`
