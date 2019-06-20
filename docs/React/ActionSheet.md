@@ -18,7 +18,7 @@ ActionSheet.select(data).then(result=>{
 ```
 
 ## 组件实现
-```javascript
+```jsx
 /**
  * Actionsheet
  * 下拉动作菜单

@@ -4,6 +4,7 @@
 - #### [动态弹窗](/React/Dialog.html)
 - #### [动作菜单组件](/React/ActionSheet.html)
 - #### [ReactNative动画指南](/React/Animated.html)
+- #### [组件逻辑复用](/React/HOC.html)
 - #### [简单实用的高阶组件](/React/titleWrapper.html)
 - #### [QAP自动关闭键盘](/React/closeKeyBoard.html)
 - #### [组件样式响应键盘高度](/React/heightProvider.html)

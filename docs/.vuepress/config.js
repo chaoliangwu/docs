@@ -34,6 +34,7 @@ module.exports = {
         ['Dialog', '动态弹窗'],
         ['ActionSheet', '动作菜单组件'],
         ['Animated', 'ReactNative动画指南'],
+        ['HOC', '组件逻辑复用'],
         ['titleWrapper', '简单实用的高阶组件'],
         ['closeKeyBoard', 'QAP自动关闭键盘'],
         ['heightProvider', '组件样式响应键盘高度'],

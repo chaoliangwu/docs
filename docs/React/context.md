@@ -16,7 +16,7 @@
 由于`rax`中的`React`版本较老，不支持新的`Context API`,所以这里我们使用旧`API`。
 #### 新版`API`
 - 创建`context`对象
-```js
+```jsx
 //定义一个颜色的默认值
 const defaultColor = "#000";
 const ColorContext = React.createContext(defaultColor);
@@ -38,7 +38,7 @@ class Parent extends React.Component {
 }
 ``` 
 - 使用`Consumer`组件获取`context`
-```js
+```jsx
 class Child extends React.Component {
     render(){
      return (
@@ -53,7 +53,7 @@ class Child extends React.Component {
 ```
 #### 旧版`API`
 - 父组件定义
-```js{2,3,4}
+```jsx{2,3,4}
 class Parent extends React.Component {
   static childContextTypes{
     color: PropTypes.string
@@ -66,7 +66,7 @@ class Parent extends React.Component {
 }
 ```
 - 子组件引用
-```js{2,3,4,8}
+```jsx{2,3,4,8}
 class Child extends React.Component {
   static contextTypes{
     color: PropTypes.string

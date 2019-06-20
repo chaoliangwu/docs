@@ -27,7 +27,7 @@ cardHoc(ContentComponent)(option).show().then((data) => {
 - `option`会作为组件`props`向下传递给`ContentComponent`,即在`ContentComponent`内部可以使用`this.props`获取到`option`中的所有值
 - 该组件返回一个`Promise`对象，可以在`ContentComponent`中通过`this.props.resolve(data)`来返回结果。
 ## ContentComponent示例
-```javascript
+```jsx
 import { createElement, Component } from 'rax';
 import { View, Text, TouchableHighlight, ScrollView } from 'nuke';
 import style from './style.less';

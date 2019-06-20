@@ -13,7 +13,7 @@
 ## 实现
 
 ### 组件注册
-```javascript
+```jsx harmony
 import QN from 'QAP-SDK'
 let componentMap = {},// 组件集合
   keyBoardHeight=0 //初始键盘高度
@@ -28,7 +28,7 @@ export function register(component){
 - 将组件实例注册到全局变量`componentMap`并返回当前键盘高度
 
 ### 监听事件
-```javascript
+```jsx harmony
   /**
    * 事件监听
    */
@@ -47,7 +47,7 @@ export function register(component){
 - 在安卓机的键盘显示和关闭时，将新的`keyBoardheight`分发给组件
 
 ### 状态分发
-```javascript
+```jsx harmony
 function setState() {
     for (let v of Object.values(componentMap)) {
         v.setState({
@@ -58,7 +58,7 @@ function setState() {
 ```
 - 遍历`componentMap`，调用组件实例的`setState()`来重新渲染组件
 ### 组件注销
-```javascript
+```jsx harmony
 export function logout(component){
   if(componentMap[component.name]){
     delete componentMap[component.name]
@@ -73,7 +73,7 @@ export function logout(component){
 import {logout, register} from "$util/heightProvider";
 ```
 ### `constructor`
-```javascript
+```jsx harmony
 constructor(props) {
     super(props);
     MyComponent.instance = this;
@@ -86,7 +86,7 @@ constructor(props) {
 - 通过`register`注册组件实例并得到一个当前键盘高度存入`state`
 
 ### `render`
-```javascript
+```jsx harmony
 render() {
   const height = window.screen.height - this.state.keyBoardHeight
   return(
@@ -99,7 +99,7 @@ render() {
 - 在`heightProvider`中已经将`MyConponent`实例注册，所以在键盘高度发生变化时，会自动为所有注册过的组件`setState`重新渲染
 
 ### 组件注销
-```javascript
+```jsx harmony
     logout(MyConponent)
     unmountComponentAtNode(MyConponent.dom);
     document.body.removeChild(MyConponent.dom);

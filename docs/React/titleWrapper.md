@@ -28,7 +28,7 @@ let param = QN.uri.parseQueryString(url);
 基于此种不方便的特性以及React高阶组件，简单实现了一个自动封装参数以及title的HOC
 
 ### 具体实现
-```javascript
+```jsx
 import {createElement, PureComponent, render} from 'rax';
 import {Util} from 'nuke'
 import QN from 'QAP-SDK'

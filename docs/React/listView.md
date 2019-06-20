@@ -3,7 +3,7 @@
 
 ## 调用方式
 
-```javascript
+```jsx harmony
 <PyListAuto  
   ref="pylist"  
   checkedValue={checkedValue}  
@@ -31,7 +31,7 @@
 
 #### 举例：
 
-```javascript
+```jsx harmony
    initList(pageNo) {
     return new Promise((resolve,reject)=>{
       const {pageSize} = this.state;
@@ -61,7 +61,7 @@
 
 #### 或者使用ES6的`async`语法糖
 
-``` javascript
+``` jsx harmony
   async initList(pageNo) {
     const {pageSize} = this.state;
     const fields='num_iid,title,price,num';
@@ -89,7 +89,7 @@
 
 ## `renderItem`
 该方法提供两个参数`item`和`index`
-```javascript
+```jsx harmony
 renderItem(item,index) {
     return (
       <View>
@@ -114,7 +114,7 @@ renderItem(item,index) {
 - 避免业务无关的代码中的小失误
 ### `state`
 
-```javascript
+```jsx harmony
 this.state = {
       isRefreshing: false, //RefreshControl状态，是否正在加载
       refreshText: '↓ 下拉刷新', //下拉显示文字
@@ -129,7 +129,7 @@ this.state = {
 
 ### `render`
 调用千牛组件`ListView`
-```javascript
+```jsx harmony
  render() {
     return (
       <View style={[style.list_container, this.props.style]}>
@@ -153,7 +153,7 @@ this.state = {
   }
 ```
 ### `initDataSource`数据加载
-```javascript
+```jsx harmony
  /**
    * 加载数据
    * @param flag //是否清空原有数据,true:内部加载默认不清空，false:外部加载重置
@@ -192,7 +192,7 @@ this.state = {
 ```
 
 ### `renderHeader`
-```javascript
+```jsx harmony
  renderHeader = () => (
     <RefreshControl
       style={style.refresh}
@@ -205,7 +205,7 @@ this.state = {
 ```
 - `listView`头部，跟随加载状态切换`加载中`和`下拉刷新`文字
 ### `renderFooter`
-```javascript
+```jsx harmony
  renderFooter = () => {
     const { total, listData: data } = this.state;
     const _total = total === '' ? -1 : total;
@@ -238,7 +238,7 @@ this.state = {
 ```
 - `listView`底部文字以及空白页
 ### `renderItem`
-```javascript
+```jsx harmony
  renderItem(item, index) {
     if (this.props.renderItem) {
       return this.props.renderItem(item, index);
@@ -246,7 +246,7 @@ this.state = {
   }
 ```
 ### `handleRefresh`
-```javascript
+```jsx harmony
  handleRefresh() {
     this.setState({ isRefreshing: true, refreshText: '加载中...', pageNo: 1 });
     this.initDataSource(true, () => {
@@ -257,7 +257,7 @@ this.state = {
 ```
 - 下拉刷新实现，重置当前页码，拉取数据
 ### `handleLoadMore`
-```javascript
+```jsx harmony
  handleLoadMore() {
     const { total, listData: data } = this.state;
     if (total > data.length && !this.state.isLoading) {

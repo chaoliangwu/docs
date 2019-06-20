@@ -6,7 +6,7 @@
 ## 调用示例
 
 ### `View`
-```javascript
+```jsx
 <TabBar activeKey={this.state.activeKey}
 onChange={this.tabChange.bind(this)}> //点击事件里要更改stata.activeKey来触发组件更新
   <TabBar.Item title={`页面1`} tabKey={'page1'}>
@@ -19,7 +19,7 @@ onChange={this.tabChange.bind(this)}> //点击事件里要更改stata.activeKey�
 
 ```
 ### `Controller`
-```javascript
+```jsx harmony
 tabChange({next: tabKey}){
   this.setState({activeKey: tabKey});
 }
@@ -28,7 +28,7 @@ tabChange({next: tabKey}){
 
 
 ## 具体实现
-```javascript
+```jsx harmony
 export default class TabBar extends PureComponent {
   static Item = Item //子组件
   constructor(props) {
@@ -75,7 +75,7 @@ export default class TabBar extends PureComponent {
 }
 ```
 页面内容渲染
-```javascript
+```jsx harmony
 render(){
   let child = this.getChild()
   return (
@@ -132,7 +132,7 @@ render(){
 ```
 
 子组件实现：
-```javascript
+```jsx harmony
 import {createElement, PureComponent, render} from 'rax';
 import {View, Text} from 'nuke';
 import style from "./style.less"
