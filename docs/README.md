@@ -10,5 +10,5 @@ features:
   details: 工作学习过程中遇到的问题以及思考。
 - title: More
   details: 期待更多。
-footer: MIT Licensed | Copyright © 2019-present 7revor
+footer: 我们写的不只是代码 / 而是我们读过的书 / 看过的电影 / 听过的音乐 / 走过的路 / 爱过的人
 --- 
