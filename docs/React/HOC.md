@@ -109,6 +109,8 @@ class OrderList extends React.Component {
 `高阶组件`是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
 
 具体而言，高阶组件是参数为组件，返回值为新组件的函数。
+
+它类似于 Mobx 中广泛使用的装饰器模式。像 Python 这样的许多语言都内置了装饰器，JavaScript也很快就会支持装饰器。HOCs 很像装饰器。
 ```js
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
@@ -184,9 +186,6 @@ const ItemList = withDataSource(ItemList,DataSource.getItems);
 当渲染 ItemList 时， withDataSource 将传递一个 data prop，其中包含从 DataSource.getItems 检索到的最新商品
 
 #### 订单列表
-```js
-const ItemList = withDataSource(List,DataSource.getItem);
-```
 
 ```jsx harmony
 class List extends React.Component {
@@ -205,18 +204,16 @@ class List extends React.Component {
   }
 }
 ```
+
 ```jsx harmony
 const OrderList = withDataSource(List,DataSource.getOrders);
 ```
 这里用定义好的高阶组件包装`List`组件，他会将items列表作为props注入List
 
 当渲染 OrderList 时， withDataSource 将传递一个 data prop，其中包含从 DataSource.getOrders 检索到的最新订单
-### 总结
+### 小结
 HOC 不会修改传入的组件，也不会使用继承来复制其行为。相反，HOC 通过将组件包装在容器组件中来组成新组件。HOC 是纯函数，没有副作用。
 
-被包装组件接收来自容器组件的所有 prop，同时也接收一个新的用于 render 的 data prop。HOC 不需要关心数据的使用方式或原因，而被包装组件也不需要关心数据是怎么来的。
-
-与组件一样，高阶组件 和包装组件之间的契约完全基于之间传递的 props。这种依赖方式使得替换 HOC 变得容易，只要它们为包装的组件提供相同的 prop 即可。
 ## render prop
 术语 `render prop` 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术。
 
@@ -428,12 +425,24 @@ function OrderList(props) {
 
 ## 对比
 
-- `render prop` 粒度更细，对于局部操作非常适用，可以更好的进行局部优化。而`HOC`可以传入多个参数，适用范围广,倾向于更好地执行更复杂的操作以及宏观上的组件控制。
-HOC属于**无入侵式扩展**，只需要用高阶组件合理地去包裹原始组件，而不需要创建新组件。
-- `Hooks` 使我们可以更优雅，更简单的复用逻辑。Hooks出来之后，前面的两个看似强大的模式都成了纸老虎。其他不说，首先从代码量上，Hooks就已经完胜了。
+- **render prop**
+<Picture src="render-prop.jpg"/>
+
+`render prop`看起来像是一把精准的手术刀。它对外提供一个渲染接口，方便对其进行局部定制。它的粒度更细。
+
+- **HOC**
+<Picture src="hoc.jpg"/>
+
+`HOC`看起来则是完整的手术台，它可以对`WrappedComponent`进行宏观上的控制，并且`WrappedComponent`也具有完整的组件生命周期。
+
+它可以传入多个参数，适用范围广,倾向于更好地执行更复杂的操作。
+
+- **Hooks**
+ 
+ `Hooks`使我们可以更优雅，更简单的复用逻辑。Hooks出来之后，前面的两个看似强大的模式都成了纸老虎。其他不说，首先从代码量上，Hooks就已经完胜了。
 并且随着Hooks的推广，更多Hooks的潜能也会被逐渐发掘出来。
 
 ## 总结
 - 一般情况下，使用 Hooks 就可以了
 - 如果希望将特性仅应用于组件树的一部分，使用 Render Props
-- 如果希望特性能够被优雅地组合复用，使用 HOCs
+- 如果希望对组件进行无侵入式的全方位增强，使用 HOCs
