@@ -111,7 +111,7 @@ class OrderList extends React.Component {
 具体而言，高阶组件是参数为组件，返回值为新组件的函数。
 
 它类似于 Mobx 中广泛使用的装饰器模式。像 Python 这样的许多语言都内置了装饰器，JavaScript也很快就会支持装饰器。HOCs 很像装饰器。
-```js
+```jsx harmony
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 **如何使用高阶组件解决上述问题?**

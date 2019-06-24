@@ -7,7 +7,7 @@
 
 ## 调用方式
 
-```javascript
+```jsx harmony
 const option = {
       data:[],
       height: 990,
@@ -58,7 +58,7 @@ export default class ContentComponent extends Component {
 
 ##  源码
 
-```javascript
+```jsx harmony
 import {
   createElement, render, Component, unmountComponentAtNode,
 } from 'rax';

@@ -34,14 +34,14 @@ Animated库用于创建更精细的交互控制的动画，它使得开发者可
 ### 插值函数：
 - `interpolate()`：将输入值范围转换为输出值范围。
 > 允许一个输入的区间范围映射到另外一个输入的区间范围。例如:一个简单的实例0-1的区间映射到0-100的区间范围:
-```javascript
+```jsx harmony
 opacity_text_1 = this.state.transformY.interpolate({
         inputRange: [0, 1],
         outputRange: ['0deg','100deg']
       }) 
 ```
 > interpolate还支持多段区间，该用来定义一些静态区间。例如:当我们输入为-152的时候取值0。然后在输入到-76的时候变成76，当输入-75的时候接着变成成-76，接着输入一直到0的时候又回到0。
-```javascript
+```jsx harmony
  transformY_text_1 = this.state.transformY.interpolate({
         inputRange: [-152, -76, -75, 0],
         outputRange: [0, 76, -76, 0]
@@ -55,7 +55,7 @@ opacity_text_1 = this.state.transformY.interpolate({
 > - 而 addListener 方法会在动画的执行过程中持续异步调用callback回调函数，提供一个最近的值作为参数。
 - 有时候我们希望在某个交互事件（特别是手势）中更灵活地捕获某个事件对象属性值，并动态赋予某个变量，对于这种需求可以通过 `Animated.event` 来实现。
 它接受一个数组为参数，数组中的层次对应绑定事件参数的相应映射，听着有点绕，看例子就很好理解了：
-```javascript
+```jsx harmony
 var scrollX = 0,
       pan = {
             x: 0,
@@ -179,13 +179,13 @@ onPanResponderMove : Animated.event([
 
 - `getLayout()`
 > 用于样式中，将{x,y}的形式转换成{left,top}的模式
-```javascript
+```jsx harmony
 style={this.state.anim.getLayout()}
 ```
 
 - `getTranslateTransform()`
 > 用于将{x,y}的组合形式转换成可以用于平移变化的模式,
-```javascript
+```jsx harmony
 style={{transform: this.state.anim.getTranslateTransform()}}
 ```
 

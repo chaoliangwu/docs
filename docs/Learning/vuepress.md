@@ -35,7 +35,7 @@ touch docs/.vuepress/config.js
 touch docs/README.md
 ```
 此时项目目录为
-```javascript
+```jsx harmony
 my_blog
 ├─── docs //文档目录
 │   ├── README.md //第一篇文档 `hello vuepress`
@@ -46,7 +46,7 @@ my_blog
 ```
 ### 配置package.json
 VuePress中有两个命令，vuepress dev docs命令运行本地服务，通过访问http://localhost:8080即可预览网站，vuepress build docs命令用来生成静态文件，默认情况下，放置在docs/.vuepress/dist目录中，当然你也可以在docs/.vuepress/config.js中的dest字段来修改默认存放目录。在这里将两个命令封装成脚本的方式，直接使用npm run docs:dev和npm run docs:build即可
-```javascript
+```jsx harmony
 {
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -87,7 +87,7 @@ yarn docs:build # 或者：npm run docs:build
 ### 首页
 默认的主题提供了一个首页（Homepage）的布局，
 编辑根目录下的README.md文件
-```javascript
+```jsx harmony
 ---
 home: true
 heroImage: /hero.png
@@ -110,7 +110,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 #### 导航栏链接
 可以通过 themeConfig.nav 增加一些导航栏链接
 
-```javascript
+```jsx harmony
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -124,7 +124,7 @@ module.exports = {
 ```
 当提供了一个 items 数组而不是一个单一的 link 时，它将显示为一个 下拉列表 ：
 
-```javascript
+```jsx harmony
 module.exports = {
   themeConfig: {
     nav: [
@@ -141,7 +141,7 @@ module.exports = {
 ```
 此外，还可以通过嵌套的 items 来在 下拉列表 中设置分组：
 
-```javascript
+```jsx harmony
 module.exports = {
   themeConfig: {
     nav: [
@@ -157,7 +157,7 @@ module.exports = {
 }
 ```
 可以使用 themeConfig.navbar 来禁用所有页面的导航栏：
-```javascript
+```jsx harmony
 module.exports = {
   themeConfig: {
     navbar: false
@@ -167,7 +167,7 @@ module.exports = {
 
 ### 侧边栏
 想要使 侧边栏（Sidebar）生效，需要配置 themeConfig.sidebar，基本的配置，需要一个包含了多个链接的数组：
-```javascript
+```jsx harmony
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -184,7 +184,7 @@ module.exports = {
 ### 嵌套的标题链接
 默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，你可以通过 themeConfig.sidebarDepth 来修改它的行为。默认的深度是 1，它将提取到 h2 的标题，设置成 0 将会禁用标题（headers）链接，同时，最大的深度为 2，它将同时提取 h2 和 h3 标题。
 
-```javascript
+```jsx harmony
 ---
 sidebarDepth: 2
 ---
@@ -193,7 +193,7 @@ sidebarDepth: 2
 ### 显示所有页面的标题链接
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 themeConfig.displayAllHeaders 设置为 true 来显示所有页面的标题链接：
 
-```javascript
+```jsx harmony
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // 默认值：false
@@ -204,7 +204,7 @@ module.exports = {
 ### 侧边栏分组
 可以通过使用对象来将侧边栏划分成多个组：
 
-```javascript
+```jsx harmony
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -229,7 +229,7 @@ module.exports = {
 
 如果你想为不同的页面组来显示不同的侧边栏，首先，将你的页面文件组织成下述的目录结构：
 
-```javascript
+```jsx harmony
 .
 ├─ README.md
 ├─ contact.md
@@ -246,7 +246,7 @@ module.exports = {
 
 接着，遵循以下的侧边栏配置：
 
-```javascript
+```jsx harmony
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -284,7 +284,7 @@ module.exports = {
 
 这里有一些可以调整的颜色变量：
 
-```javascript
+```jsx harmony
 // showing default values
 $accentColor = #3eaf7c
 $textColor = #2c3e50
@@ -299,7 +299,7 @@ $codeBgColor = #282c34
 - 文档放置在项目的 docs 目录中；
 - 使用的是默认的构建输出位置；
 - VuePress 以本地依赖的形式被安装到你的项目中，并且配置了如下的 npm scripts:
-```javascript
+```jsx harmony
 {
   "scripts": {
     "docs:build": "vuepress build docs"
@@ -379,7 +379,7 @@ chmod 777 deploy.sh
 在vuepress中使用[Vue](https://cn.vuejs.org/v2/guide/index.html)
 ### 自定义Vue组件
 所有在 .vuepress/components 中找到的 *.vue 文件将会自动地被注册为全局的异步组件，如：
-```javascript
+```jsx harmony
 .
 └─ .vuepress
    └─ components
@@ -397,7 +397,7 @@ chmod 777 deploy.sh
 
 ### 使用[ElementUI](http://element-cn.eleme.io/#/zh-CN/component/installation)
 由于 `VuePress` 是一个标准的 Vue 应用，你可以通过创建一个 `.vuepress/enhanceApp.js` 文件来做一些应用级别的配置，当该文件存在的时候，会被导入到应用内部。`enhanceApp.js` 应该 `export default` 一个钩子函数，并接受一个包含了一些应用级别属性的对象作为参数。你可以使用这个钩子来安装一些附加的 `Vue` 插件、注册全局组件，或者增加额外的路由钩子等：
-```javascript
+```jsx harmony
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
   options, // 附加到根实例的一些选项
@@ -410,7 +410,7 @@ export default ({
 
 #### 开始
 - 新建``.vuepress/enhanceApp.js``文件，并引入ElementUI
-```javascript
+```jsx harmony
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 export default ({
@@ -425,7 +425,7 @@ export default ({
 ```
 - 安装依赖
 在`package.json`中添加
-```javascript
+```jsx harmony
 "dependencies": {
     "element-ui": "^2.7.0"
 }
@@ -460,7 +460,7 @@ yarn # 或者 npm i
  <Picture src="vuepress/vuepress3.png"/>
 #### 设置`base`
 - 由于文档地址已经更换，这里需要将`config.js`里的`base`设置为`/docs/`
-```javascript
+```jsx harmony
 module.exports = {
   base:'/docs/'
 }

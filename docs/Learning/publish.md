@@ -9,7 +9,7 @@
 
 ### 简单实现
 #### 发布者
-```javascript
+```jsx harmony
 class Subject{
   constructor(){
     this.subs = [];//观察者集合
@@ -33,7 +33,7 @@ class Subject{
 ```
 发布者内部维护了一个`subs`集合，他的`notify`方法对集合进行遍历，统一调用观察者的`update`方法
 #### 观察者
-```javascript
+```jsx harmony
 class Observer{
   update(){
     console.log('update');
@@ -42,7 +42,7 @@ class Observer{
 ```
 观察者实现相同的`update`接口
 #### 测试
-```javascript
+```jsx harmony
 let subject = new Subject();
 let ob = new Observer();
 let ob2 = new Observer();
@@ -71,7 +71,7 @@ subject.notify();
 利用`ES6`的`class`关键字对`Event`进行初始化,包括`Event`的事件清单和监听者上限。
 
 选择`Map`作为储存事件的结构,因为作为键值对的储存方式`Map`比一般对象更加适合,操作起来也更加简洁。
-```javascript
+```jsx harmony
 class EventEmeitter {
   constructor() {
     this._events = this._events || new Map(); // 储存事件/回调键值对
@@ -82,7 +82,7 @@ class EventEmeitter {
 #### 监听与触发
 触发监听函数我们可以用`apply`与`call`两种方法,在少数参数时`call`的性能更好,多个参数时`apply`性能更好。
 
-```javascript
+```jsx harmony
 // 监听名为type的事件
 EventEmeitter.prototype.addListener = function(type, fn) {
   const handler = this._events.get(type); // 获取对应事件名称的处理程序清单
@@ -117,7 +117,7 @@ EventEmeitter.prototype.emit = function(type, ...args) {
 
 #### 移除监听
 用 `removeListener` 函数移除监听函数,但是匿名函数是无法移除的
-```javascript
+```jsx harmony
 EventEmeitter.prototype.removeListener = function(type, fn) {
  const handler = this._events.get(type); // 获取对应事件名称的处理程序清单
     if(!handler) {
@@ -144,7 +144,7 @@ EventEmeitter.prototype.removeListener = function(type, fn) {
 
 ```
 #### 测试
-```javascript
+```jsx harmony
 const Event = new EventEmeitter()
 Event.addListener('add',(data)=>{
     console.log('event:add,data:'+data)

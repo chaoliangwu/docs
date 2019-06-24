@@ -10,7 +10,7 @@
 - `this.controller = new ItemAddController();`
 > 控制主界面的各种函数
 - `state`
-```javascript
+```jsx harmony
      this.state = {
       pic_category_id: '',//图片空间类目id,即（普云商品）
       seller_cids: {value: "", cid: ''},//店铺类目
@@ -78,7 +78,7 @@
 
 ### `componentDidMount`
 接下来，在页面渲染完成后，进行时间的绑定。由于`QAP`采用的是多页面架构，所以不同页面件的数据交互就需要通过`QAP`的事件机制来完成
-```javascript
+```jsx harmony
  const self = this
     /**
      * 图片选择
@@ -134,7 +134,7 @@
 ### `render`
 主界面主要负责数据处理，它的视图比较简单，此处就不一一列举。
 主要对表单验证自己实现了一个小组件。
-```javascript
+```jsx harmony
 <ActionRow key={6}
            required
            label={'一口价'}
@@ -168,7 +168,7 @@
 
 1. 调用千牛协议
 
-```javascript
+```jsx harmony
      QN.app.invoke({
         api:'selectFiles',
         query:{
@@ -183,7 +183,7 @@
 
 2. 将图片进行`Base64`转码
 
-```javascript
+```jsx harmony
  QN.app.invoke({
     api:'getFileData',
     query:{
@@ -194,7 +194,7 @@
 
 > 这里遇到一个问题，一次如果多个图片进行转换时，上面的是异步函数，如果用`Promise.all`一次执行多个，`IOS`可以正常转换，但是`Andriod`会报错，所以后期对图片转码进行了同步
 
-```javascript
+```jsx harmony
 async upload (photos, cat_id) {
     const  promises = []
     for(let photo of photos){
@@ -212,7 +212,7 @@ async upload (photos, cat_id) {
 
 3.调用`TOP`接口上传图片到图片空间
 
-```javascript
+```jsx harmony
   QN.top.invoke({
     query: {
       method: 'taobao.picture.upload',
@@ -256,7 +256,7 @@ async upload (photos, cat_id) {
 
 - 一个汉字差不多正好是两个字节的长度，一屏为24个汉字的长度
 
-```javascript
+```jsx harmony
  getLength(str) {
     return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
   }
@@ -264,7 +264,7 @@ async upload (photos, cat_id) {
 
 - 对`Input`的输入事件进行监听
 
-```javascript
+```jsx harmony
 onInput={(e)=>{
     const str = e.value
       const arr = str.split('\n')
@@ -355,7 +355,7 @@ onInput={(e)=>{
 
 - 步骤1：必填字段准备–基本的信息字段值
 
-```javascript
+```jsx harmony
 {
     "location.state":"浙江",
     "location.city":"杭州",
@@ -420,7 +420,7 @@ onInput={(e)=>{
 - 步骤6：拼接整个商品发布字段
 
 例：
-```javascript
+```jsx harmony
 param = {
     approve_status: "onsale",
     cid: 50012413,
@@ -452,7 +452,7 @@ param = {
 
 ## 附：`controller`部分函数
 <a id="pic_space_folder_handler"></a>
-```javascript
+```jsx harmony
  /**
    * 图片空间文件夹处理
    */
@@ -578,7 +578,7 @@ export default class ActionRow extends Component {
 
 #### `HeightProvider`
 <a id="heightProvider"></a>
-```javascript
+```jsx harmony
 import QN from 'QAP-SDK'
 let componentMap = new Map()//注册组件实例
 let keyBoardHeight=0
@@ -615,7 +615,7 @@ function setState(){
 ##### 使用方法：
 - 在组件构建完毕后进行注册
 
-```javascript
+```jsx harmony
 let keyBoardHeight = register(CategorySelection)
 this.state = {
       keyBoardHeight: keyBoardHeight
@@ -624,7 +624,7 @@ this.state = {
 > 获取初始键盘高度，将其放入组件`state`中
 
 - 在`render`方法中动态为组件设置高度
-```javascript
+```jsx harmony
 const {height, width} = window.screen,//屏幕像素
  pureHeight = height / (width / 750) //屏幕真实高度（rem）
  body_height = pureHeight - this.state.keyBoardHeight//组件高度为真实高度减去键盘高度

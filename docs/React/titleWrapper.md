@@ -7,7 +7,7 @@ categories: React
 自动封装参数以及设置标题
 ## 背景
 在qap平台中，使用QN.navigator来跳转
-```javascript
+```jsx harmony
 QN.navigator.push({
       url: url,
       title: '标题',
@@ -18,7 +18,7 @@ QN.navigator.push({
 ## 缺点
 - 传递的页面title只有在第一次进去的时候会显示，刷新页面后就会丢失title。
 - 使用这个导航进入新页面后，页面传递参数需要手动获取
-```javascript
+```jsx harmony
 import {Util} from 'nuke';
 let url = Util.Location.search;
 let param = QN.uri.parseQueryString(url);
@@ -69,11 +69,11 @@ function _titleWrapper(title, param) {
 ### 调用
 
 原本的React页面实现:
-```javascript
+```jsx harmony
 render(<MyComponent/>);
 ```
 使用HOC之后：
-```javascript
+```jsx harmony
 import {titleWrapper} from Util
 titleWrapper('我是标题', MyComponent)
 ```

@@ -61,7 +61,8 @@
 
 #### 或者使用ES6的`async`语法糖
 
-``` jsx harmony
+```jsx harmony
+
   async initList(pageNo) {
     const {pageSize} = this.state;
     const fields='num_iid,title,price,num';
@@ -90,6 +91,7 @@
 ## `renderItem`
 该方法提供两个参数`item`和`index`
 ```jsx harmony
+
 renderItem(item,index) {
     return (
       <View>

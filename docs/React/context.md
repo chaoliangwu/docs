@@ -22,7 +22,7 @@ const defaultColor = "#000";
 const ColorContext = React.createContext(defaultColor);
 ```
 - 使用`Provider`生成`context`
-```js
+```jsx harmony
 class Parent extends React.Component {
     state = {
         childColor: "#000"
@@ -83,7 +83,7 @@ class Child extends React.Component {
 ## 具体实现
 
 ### titleWrapper
-```js
+```jsx harmony
 const iosLimit = QN.os.ios&&true; // 默认打开
 function _titleWrapper(title, param) {
   return function doTitle(WrappedComponent) {
@@ -142,7 +142,7 @@ export default function titleWrapper(title, component) {
     <PyButton title='我是免费功能 '/>
 ```
 #### 组件实现
-```js
+```jsx harmony
 class PyButton extends Component {
   static contextTypes = { // 接收titleWrapper注入的context
     iosFreeLimit: PropTypes.bool

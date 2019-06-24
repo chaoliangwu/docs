@@ -12,7 +12,7 @@
 
 ## ElementUI中的弹窗组件
 
-```javascript
+```jsx harmony
 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -32,7 +32,7 @@ this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
 #### 分析
 原理是调用静态方法，然后在方法中控制窗口的显示，该方法返回一个Promise对象，大致思路为
 
-```javascript
+```jsx harmony
 let myPromise;
  open=()=>{
         return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ let myPromise;
         })
     }
 ```
-```javascript
+```jsx harmony
 confirm=()=>{
     myPromise.resolve()
 }
@@ -50,7 +50,7 @@ cancel=()=>{
 }
 ```
 这样一来，在父界面调用的时候逻辑清晰明了：
-```javascript
+```jsx harmony
  myDialog.open(message).then(()=>{
                     //此处处理确认逻辑
                 }).catch(()=>{

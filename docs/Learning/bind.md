@@ -12,7 +12,7 @@
 
 ## 什么是数据劫持
 数据劫持比较好理解，通常我们利用`Object.defineProperty`劫持对象的访问器，在属性值发生变化时我们可以获取变化，从而进行进一步操作
-```javascript
+```jsx harmony
 // 这是将要被劫持的对象
 const data = {
   name: '',
@@ -81,7 +81,7 @@ dog
 
 我们就对对象obj的text属性进行劫持，在更改属性值的时候对DOM进行操作，这就是一个极简的双向绑定。
 
-```javascript
+```jsx harmony
 const obj = {};
 Object.defineProperty(obj, 'text', {
   get: function() {
@@ -116,7 +116,7 @@ input.addEventListener('keyup', function(e){
 
 我们先实现一个订阅发布中心，即消息管理员`Dep`。Dep主要负责收集订阅者，然后在属性变化的时候执行对应订阅者的更新函数。
 
-```javascript
+```jsx harmony
 let uid = 0;
     /**
     * 用于储存订阅者并发布消息
@@ -148,7 +148,7 @@ let uid = 0;
 ```
 ### Observer 监听者
 现在我们需要实现监听者`Observer`，用于监听属性值的变化。
-```javascript
+```jsx harmony
   class Observer {
     constructor(value) {
       this.value = value;
@@ -206,7 +206,7 @@ let uid = 0;
 - 这里还有一个细节点需要处理，我们只要在订阅者 `Watcher` 初始化的时候才需要添加订阅者，所以需要做一个判断操作。因此可以在订阅器上做一下手脚：
 
 在 `Dep.target` 上缓存订阅者，添加成功后再将其去掉就可以了。订阅者 `Watcher` 的实现如下：
-```javascript
+```jsx harmony
 class Watcher {
     constructor(vm, expOrFn, cb) {
       this.depIds = {}; // hash储存订阅者的id,避免重复的订阅者
@@ -251,7 +251,7 @@ class Watcher {
 那么我们最后完成MVVM,将上述方法挂载在MVVM上。
 
 ### MVVM 
-```javascript
+```jsx harmony
 class MVVM {
     constructor(options = {}) {
       // 简化了$options的处理
@@ -290,7 +290,7 @@ class MVVM {
 到这里我们还少了一步就是指令解析器，用来解析指令并进行试图渲染。为了方便我们直接手动订阅事件。
 :::
 ### 事件订阅
-```javascript
+```jsx harmony
 let demo = new MVVM({
   data: {
     text: '',
@@ -312,7 +312,7 @@ demo.$watch('text', str => label.innerHTML = str);
 ### Object.defineProperty 的缺陷
 
 其实我们升级版的双向绑定依然存在漏洞，比如我们将属性值改为数组。
-```javascript
+```jsx harmony
  let demo = new Vue({
     data: {
       list:[1,2,3]
@@ -339,7 +339,7 @@ demo.$watch('text', str => label.innerHTML = str);
 ```
 
 `Object.defineProperty` 的第一个缺陷，无法监听数组变化。然而 `Vue` 的文档提到了 `Vue` 是可以检测到数组变化的，但是只有以下八种方法。`vm.items[indexOfItem] = newValue` 这种是无法检测的。
-```javascript
+```jsx harmony
 push()
 pop()
 shift()
@@ -350,7 +350,7 @@ reverse()
 
 ```
 其实作者在这里用了一些奇技淫巧，把无法监听数组的情况hack掉了，以下是方法示例。
-```javascript
+```jsx harmony
 const aryMethods = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'];
 const arrayAugmentations = [];
 
@@ -382,7 +382,7 @@ list2.push('d');  // 4
 由于只针对了八种方法进行了 `hack` 所以其他数组的属性也是检测不到的。
 
 可以注意到在上文中的实现里，我们多次用遍历方法遍历对象的属性。
-```javascript
+```jsx harmony
 Object.keys(value).forEach(key => this.convert(key, value[key]));
 ```
 
@@ -398,7 +398,7 @@ Object.keys(value).forEach(key => this.convert(key, value[key]));
 
 ### Proxy 可以直接监听对象而非属性
 我们还是以上文中用 `Object.defineProperty` 实现的极简版双向绑定为例，用` Proxy `进行改写。
-```javascript
+```jsx harmony
 const input = document.getElementById('input');
 const p = document.getElementById('p');
 const obj = {};
@@ -427,7 +427,7 @@ input.addEventListener('keyup', function(e) {
 ###  Proxy 可以直接监听数组的变化
 
 当我们对数组进行操作 `push` `shift` `splice` 时，会触发对应的方法名称和 `length` 的变化，我们可以借此进行操作，以上文中 `Object.defineProperty` 无法生效的列表渲染为例。
-```javascript
+```jsx harmony
 
 const list = document.getElementById('list');
 const btn = document.getElementById('btn');

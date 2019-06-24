@@ -145,7 +145,7 @@ taosir_do|[度量衡属性信息](/Notes/goodsProps.html#度量衡属性信息)
 首先过滤掉销售属性 `is_sale_prop===false`
 
 初始化一个默认商品，需要组装三个字段
-```javascript
+```jsx harmony
 item:{
   props:'',
   input_pids:'',
@@ -167,7 +167,7 @@ item:{
     - 散装子属性vid为`129808`
     
 此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808',
   input_pids:'',
@@ -187,7 +187,7 @@ item:{
 - 用户输入`货号:2019年夏款`
     - 货号pid为`21394`
 此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808',
   input_pids:'21394',
@@ -210,7 +210,7 @@ item:{
 用户选择`产地:中国大陆` 
 - 产地pid为`21299`
 - 中国大陆的属性为
-```javascript
+```jsx harmony
 {
   vid:27772,
   name:'中国大陆',
@@ -226,7 +226,7 @@ item:{
 - 叶子属性城市pid为`31778` 临沂市vid为`47653222`
 
 此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808,21299:27772,24557:254221,31778:47653222',
   input_pids:'21394',
@@ -245,7 +245,7 @@ item:{
 - 用户输入`品牌` `系列` `型号`三个字段，输入值`阿迪达斯` `三叶草` `跑步鞋系列`
 
 需拼接字段为
-```javascript
+```jsx harmony
 input_pids:'20000'
 input_str:'阿迪达斯;系列;三叶草;型号;跑步鞋'
 ```
@@ -254,7 +254,7 @@ input_str:'阿迪达斯;系列;三叶草;型号;跑步鞋'
 :::
    
 此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808,21299:27772,24557:254221,31778:47653222',
   input_pids:'21394,20000',
@@ -275,7 +275,7 @@ item:{
 - 用户输入`系列` `型号`两个字段，输入值`乔丹系列` `airjordan`
 
 需拼接字段为
-```javascript
+```jsx harmony
 props:'20000:44335'
 input_pids:'20000'
 input_str:'耐克;系列;乔丹系列;型号;airjordan'
@@ -285,7 +285,7 @@ input_str:'耐克;系列;乔丹系列;型号;airjordan'
 `品牌:耐克`需要在`props`和`input_pids` `input_str`同时拼入
 :::
 此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808,21299:27772,24557:254221,31778:47653222,20000:44335',
   input_pids:'21394,20000',
@@ -303,7 +303,7 @@ item:{
 用户选择三组材质信息分别为`彩棉` `羊毛` `棉`，其中`羊毛`和`棉`分别输入含量值`80%` `20%`
 - 材质pid为`149422948`
 需拼接字段为
-```javascript
+```jsx harmony
 input_pids:'149422948'
 input_str:'彩棉 羊毛80% 棉20%'
 ```
@@ -312,7 +312,7 @@ input_str:'彩棉 羊毛80% 棉20%'
 :::
 
 此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808,21299:27772,24557:254221,31778:47653222,20000:44335',
   input_pids:'21394,20000,149422948',
@@ -349,7 +349,7 @@ item:{
 净含量pid为`25479856`
 
 需拼接字段为
-```javascript
+```jsx harmony
 input_pids:'25479856',
 input_str:'150g'
 ```
@@ -368,7 +368,7 @@ is_input|是否输入框
 用户选择`尺寸`属性,
 - 尺寸pid为`3764420`
 输入模板为
-```javascript
+```jsx harmony
 [
   {
     text:'长',
@@ -413,12 +413,12 @@ is_input|是否输入框
 - 第五个属性`is_input===true`是`输入框`，将用户输入值30拼入,拼入后`input_str`为`120x30`
 
 遍历结束，拼入用户所选单位`cm`。此时，需拼接字段为
-```javascript
+```jsx harmony
 input_pids:'3764420',
 input_str:'120x30cm'
 ```
 将净含量，尺寸拼入，此时商品属性为
-```javascript
+```jsx harmony
 item:{
   props:'30000:129808,21299:27772,24557:254221,31778:47653222,20000:44335',
   input_pids:'21394,20000,149422948,25479856,3764420',

@@ -6,7 +6,7 @@
 
 ## 调用示例
 
-```javascript
+```jsx harmony
 const data = {
     onSale:'出售中',
     inventory:'仓库中',
@@ -168,7 +168,7 @@ const styles = {
 ```
 
 style.less
-```javascript
+```jsx harmony
 .container{
   width: 750rem;
   flex-direction: column;

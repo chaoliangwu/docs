@@ -1,6 +1,6 @@
 ## 引入
 首先看这么一个例子
-```js
+```jsx harmony
 setTimeout(function() {
     console.log('timeout1');
 })
@@ -63,7 +63,7 @@ UI rendering|...
 ## 单次循环的执行过程
 
 还是上面的例子
-```js
+```jsx harmony
 setTimeout(function() {
     console.log('timeout1');
 })
@@ -90,7 +90,7 @@ console.log('global1');
 ### 任务分发
 
 - `script`任务执行时首先遇到了`setTimeout`。`setTimeout`为一个宏任务源，那么他的作用就是将任务分发到它对应的队列中。
-```js
+```jsx harmony
 setTimeout(function() {
     console.log('timeout1');
 })
@@ -142,7 +142,7 @@ setTimeout(function() {
  
 ### 第二步
 执行过程遇到`setTimeout`。`setTimeout`作为任务分发器，将任务分发到对应的宏任务队列中。
-```js
+```jsx harmony
 setTimeout(function() {
     console.log('timeout1');
     process.nextTick(function() {
@@ -164,7 +164,7 @@ setTimeout(function() {
 ::: tip
 `setImmediate`的任务队列会在`setTimeout`队列的后面执行，即所有的`setTimeout`任务执行完毕后，才会开始执行`setImmediate`的任务队列
 :::
-```js
+```jsx harmony
 setImmediate(function() {
     console.log('immediate1');
     process.nextTick(function() {
@@ -182,7 +182,7 @@ setImmediate(function() {
  
 ### 第四步
 执行遇到`nextTick`，`process.nextTick`是一个微任务分发器，它会将任务分发到对应的微任务队列中去。
-```js
+```jsx harmony
 process.nextTick(function() {
     console.log('glob1_nextTick');
 })
@@ -192,7 +192,7 @@ process.nextTick(function() {
 ### 第五步
 执行遇到`Promise`。`Promise`的`then`方法会将任务分发到对应的微任务队列中，但是它构造函数中的方法会直接执行。
 因此，`glob1_promise`会第二个输出。
-```js
+```jsx harmony
 new Promise(function(resolve) {
     console.log('glob1_promise');
     resolve();
@@ -208,7 +208,7 @@ new Promise(function(resolve) {
 
 ###第六步 
 执行遇到第二个`setTimeout`。
-```js
+```jsx harmony
 setTimeout(function() {
     console.log('timeout2');
     process.nextTick(function() {
@@ -226,7 +226,7 @@ setTimeout(function() {
 
 ### 第七步
 先后遇到`nextTick`与`Promise`
-```js
+```jsx harmony
 process.nextTick(function() {
     console.log('glob2_nextTick');
 })
@@ -241,7 +241,7 @@ new Promise(function(resolve) {
 
 ###第八步
 再次遇到`setImmediate`
-```js
+```jsx harmony
 setImmediate(function() {
     console.log('immediate2');
     process.nextTick(function() {

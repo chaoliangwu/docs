@@ -69,7 +69,7 @@ export function logout(component){
 
 ## 调用方式
 ### 引入方法
-```javascript
+```jsx harmony
 import {logout, register} from "$util/heightProvider";
 ```
 ### `constructor`
