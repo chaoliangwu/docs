@@ -58,7 +58,7 @@ cancel=()=>{
                 })
 ```
 开始在项目中采取的方式是在每一个需要调用dialog组件的地方，手动把dialog插入到body的最底部
-```javascript
+```jsx harmony
 import MyDialog from "../../components/dialog/MyDialog";
 
 //······
@@ -78,7 +78,7 @@ return
 
 ## 实现
 
-```javascript
+```jsx harmony
 import {createElement, Component, render, PureComponent, findDOMNode, unmountComponentAtNode} from 'rax';
 import {View, Text, Dialog, Touchable} from 'nuke';
 
@@ -143,7 +143,7 @@ export default class Dialog extends Component {
 ```
 
 ## 调用
-```javascript
+```jsx harmony
 import Dialog from './Dialog'
 
 PyDialog.confirm(`确定要删除吗？`).then(()=>{
