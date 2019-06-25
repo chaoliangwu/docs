@@ -1,59 +1,80 @@
 .content
   code
-    background-color: #fff5f5;
-    color:#fc3a52;
-blockquote
-  font-size :1rem;
+    background-color: #f4f5f6;
+    color: #1d7bd1;
 
+blockquote
+  font-size: 1rem;
 
 
 div[class*="language-"] { // 代码块背景
-    position: relative;
-    background-color: #282923;
-    border-radius: 6px;
-  font-size :17px;
+  position: relative;
+  background-color: #26333a;
+  border-radius: 6px;
+  font-size: 17px;
 }
 
-.token.keyword{
-    color: #fc3a52;
+.token.keyword {
+  color: #57a8d3;
 }
-.token.boolean{
-    color :#C48CFF;
+
+.token.boolean {
+  color: #C48CFF;
 }
-.token.function{
-    color:#52E3F6
+
+.token.number {
+  color: #C48CFF;
 }
-.token.class-name{
-  color:#A7EC21
+
+.token.function {
+  color: #57a8d3;
 }
+
+.token.class-name {
+  color: #9bc7dd
+}
+
 .token.parameter {
-  color: #fd9621;
-  font-style:italic
+  color: #9bc7dd;
+  font-style: italic
 }
-.token.string{
-    color:#ECE47E
+
+.token.string {
+  color: #3f9965
 }
-.token.operator{
-  color:#fc3a52;
+
+.token.operator {
+  color: #fff;
 }
-  .token.comment{
-    color:#74705d;
+
+.token.comment {
+  color: #74705d;
+}
+
+.token.tag {
+  color: #49aee2;
+
+  .token.class-name {
+    color: #49aee2;
   }
-.token.tag{
-  color:#fc3a52;
-  .token.class-name{
-    color:#fc3a52;
+
+  .token.attr-name {
+    color: #49aee2
   }
-  .token.attr-name{
-    color:#A7EC21
+
+  .token.attr-value {
+    color: #ECE47E
   }
-  .token.attr-value{
-    color:#ECE47E
+
+  .token.keyword {
+    color: #57a8d3;
   }
-  .token.keyword{
-    color: #fd9621;
+
+  .token.script {
+    color: #fff
   }
-  .token.script{
-    color :#fff
-  }
+}
+
+.token.plain-text {
+  color: #9bc7dd
 }
