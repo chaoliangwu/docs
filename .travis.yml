@@ -16,4 +16,4 @@ script:
 branch: master
 
 after_success:
-- scp -o StrictHostKeyChecking=no -r docs/.vuepress/dist/* ubuntu@62.234.211.24:/home/ubuntu/nginx-server/docs
+- scp -o StrictHostKeyChecking=no -r docs/.vuepress/dist/* ubuntu@148.70.118.183:/home/ubuntu/nginx-server/docs
