@@ -7,7 +7,7 @@ before_install:
    -in id_rsa.enc -out ~/.ssh/id_rsa -d
  - chmod 600 ~/.ssh/id_rsa
 addons:
-  ssh_known_hosts: 148.70.118.183
+ ssh_known_hosts: 148.70.118.183
 cache:
   directories:
   - node_modules
