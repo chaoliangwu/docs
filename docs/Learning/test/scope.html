@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var name = "The Window";
+  var object = {
+    getNameFunc : function(arg1){
+      return function(arg2){
+        return arg1;
+      };
+    } };
+  alert(object.getNameFunc(123)(234)); //"The Window"(在非严格模式下)
+</script>
+</body>
+</html>

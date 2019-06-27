@@ -48,6 +48,7 @@ module.exports = {
         ['publish','观察者模式&发布-订阅模式'],
         ['bind','双向数据绑定'],
         ['loop','事件循环'],
+        ['closure', '执行环境、作用域链与闭包'],
       ],
       '/Notes/': [
         ['publish', '发布宝贝'],
