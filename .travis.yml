@@ -6,7 +6,6 @@ before_install:
  - openssl aes-256-cbc -K $encrypted_6dc88f1910e2_key -iv $encrypted_6dc88f1910e2_iv
    -in id_rsa.enc -out ~/.ssh/id_rsa -d
  - chmod 600 ~/.ssh/id_rsa
- - echo -e "148.70.118.183 主机IP地址\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 addons:
  ssh_known_hosts: 148.70.118.183
 cache:
