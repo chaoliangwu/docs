@@ -11,3 +11,4 @@
 - #### [ListView长列表](/React/listView.html)
 - #### [卡片弹窗HOC](/React/cardHoc.html)
 - #### [IOS高级功能控制](/React/context.html)
+- #### [深入理解Redux中间件](/React/middleware.html)

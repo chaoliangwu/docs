@@ -40,7 +40,8 @@ module.exports = {
         ['heightProvider', '组件样式响应键盘高度'],
         ['listView', 'ListView长列表'],
         ['cardHoc', '卡片弹窗HOC'],
-        ['context', 'IOS高级功能控制']
+        ['context', 'IOS高级功能控制'],
+        ['middleware', '深入理解Redux中间件']
       ],
       '/Learning/': [
         ['vuepress', 'VuePress教程'],
