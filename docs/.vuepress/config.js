@@ -5,7 +5,7 @@ module.exports = {
   head: [
     ['link', {
       rel: 'icon',
-      href: '/favicon.ico'
+      href: '/img/favicon.ico'
     }]
   ],
   markdown: {

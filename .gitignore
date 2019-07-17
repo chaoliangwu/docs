@@ -97,3 +97,5 @@ typings/
 docs/.vuepress/dist
 out
 gen
+.gitignore
+yarn.lock
