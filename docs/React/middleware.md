@@ -12,7 +12,7 @@ export function getTodos(){
   }
 }
 ``` 
-而正常的 Action 就看起来好像应该是这样：
+而正常的 Action 看起来好像应该是这样：
 ```jsx harmony
 export function getTodos(){
   return {
