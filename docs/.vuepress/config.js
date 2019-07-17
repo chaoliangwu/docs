@@ -41,7 +41,8 @@ module.exports = {
         ['listView', 'ListView长列表'],
         ['cardHoc', '卡片弹窗HOC'],
         ['context', 'IOS高级功能控制'],
-        ['middleware', '深入理解Redux中间件']
+        ['middleware', '深入理解Redux中间件'],
+        ['QAPerror', 'QAP异常捕获']
       ],
       '/Learning/': [
         ['vuepress', 'VuePress教程'],
@@ -62,15 +63,6 @@ module.exports = {
         /*    'contact', /!* /contact.html *!/
             'about'    /!* /about.html *!/*/
       ]
-    }
-  },
-  markdown: {
-    // markdown-it-anchor 的选项
-    anchor: { permalink: false },
-    // markdown-it-toc 的选项
-    toc: { includeLevel: [1, 2] },
-    config: md => {
-      // 使用更多的 markdown-it 插件!
     }
   }
 }
