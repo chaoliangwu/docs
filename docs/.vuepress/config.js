@@ -50,6 +50,9 @@ module.exports = {
         ['bind','双向数据绑定'],
         ['loop','事件循环'],
         ['closure', '执行环境、作用域链与闭包'],
+        ['catch', '全局异常捕获'],
+        ['ast', '抽象语法树'],
+        ['babelPlugin', 'babel插件入门'],
       ],
       '/Notes/': [
         ['publish', '发布宝贝'],
