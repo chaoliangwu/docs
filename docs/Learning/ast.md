@@ -28,7 +28,7 @@ function add(a, b) {
     ...
 }
 ```
-params 继续炒粉，其实就是两个`identifier`组成的数组，之后也没办法再拆分了。
+params 继续拆分，其实就是两个`identifier`组成的数组，之后也没办法再拆分了。
 ```jsx harmony
 [
     {
