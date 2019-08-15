@@ -49,7 +49,7 @@ fie 打包时直接把 React 排除掉了，采用的是引入 script 的形式�
 2. 进入 react 和 react-dom 的 cjs 目录下，分别将 `react.production.min.js` `react-dom.pruduction.min.js`，
 `react.development.js` `react-dom.development.js` 拷贝到刚才创建的目录下。并将他们重命名为`react.js`和`react-dom.js`
 3. 修改`fie.config.js`
-```jsx{14}
+```jsx{14,20}
 module.exports = {
   toolkit: 'fie-toolkit-qnui',
 
@@ -63,12 +63,13 @@ module.exports = {
   tasks: {
     start: [
       {
-        command: 'node start.js' // 这里换成 'node start.js'
+        command: 'NODE_ENV=development node build.js' 
+        // 忽略提示信息，可以在此指定 NODE_ENV=production
       }
     ],
     build: [
       {
-        command: 'node build.js'
+        command: 'NODE_ENV=production node build.js'
       }
     ],
     deploy: [
@@ -83,12 +84,12 @@ module.exports = {
 ::: warning 提示
 这里区分 **开发环境** 和 **生产环境**，目的是在开发环境构建中显示完整的 **语法检查** 和 **性能提示**。
 
-若不需要，忽略这一步和第四步，直接进行第五步。
+若不需要，可将 start 和 build 全部指定 NODE_ENV=production
 :::
 
 
 
-4. 新建 `start.js`
+4. 修改 `build.js`
 ```jsx{12}
 let fs = require('fs-extra');
 let globby = require('globby');
@@ -101,7 +102,7 @@ globby([
   'node_modules/react-router-redux/dist/*',
   'node_modules/redux-thunk/dist/*',
   'node_modules/redux/dist/*',
-  'lib/development/*', 
+  `lib/${process.env.NODE_ENV}/*`, 
 ]).then(paths => {
   fs.mkdirsSync('build/lib/');
   paths.forEach((item) => {
@@ -111,35 +112,9 @@ globby([
 });
 //使用统计
 
-console.log('copy files to build/lib done !');
+console.log('copy files to build/lib done ! mode:'+ process.env.NODE_ENV);
 ```
-
-5. 修改 `build.js`
-```jsx{12}
-let fs = require('fs-extra');
-let globby = require('globby');
-let path = require('path');
-
-globby([
-  'node_modules/babel-polyfill/dist/*',
-  'node_modules/react-redux/dist/*',
-  'node_modules/react-router/umd/*',
-  'node_modules/react-router-redux/dist/*',
-  'node_modules/redux-thunk/dist/*',
-  'node_modules/redux/dist/*',
-  'lib/production/*',  // 复制开发生产环境文件
-]).then(paths => {
-  fs.mkdirsSync('build/lib/');
-  paths.forEach((item) => {
-    let filename = path.basename(item);
-    fs.copySync(item, 'build/lib/' + filename);
-  });
-});
-//使用统计
-
-console.log('copy files to build/lib done !');
-```
-6. 修改`pages/js/root.js`
+5. 修改`pages/js/root.js`
 
 这个文件是 fie 对各种外置 script 进行加载的过程，上一步我们修改了要引入的 script 文件后，要在这里进行适配。
 
@@ -504,7 +479,6 @@ window.onload = function () {
 let fs = require('fs-extra');
 let globby = require('globby');
 let path = require('path');
-
 //STEP 3 将lib copy 到 build 目录
 
 globby([
@@ -515,7 +489,7 @@ globby([
   'node_modules/redux-thunk/dist/*',
   'node_modules/redux/dist/*',
   'lib/common/*',
-  'lib/production/*', 
+  `lib/${process.env.NODE_ENV}/*`,
 ]).then(paths => {
   fs.mkdirsSync('build/lib/');
   paths.forEach((item) => {
@@ -525,39 +499,10 @@ globby([
 });
 //使用统计
 
-console.log('copy files to build/lib done !');
+console.log('copy files to build/lib done ! mode:'+process.env.NODE_ENV);
 
 ```
-### start.js
-```js
-'use strict';
 
-let fs = require('fs-extra');
-let globby = require('globby');
-let path = require('path');
-
-//STEP 3 将lib copy 到 build 目录
-
-globby([
-  'node_modules/babel-polyfill/dist/*',
-  'node_modules/react-redux/dist/*',
-  'node_modules/react-router/umd/*',
-  'node_modules/react-router-redux/dist/*',
-  'node_modules/redux-thunk/dist/*',
-  'node_modules/redux/dist/*',
-  'lib/common/*',
-  'lib/development/*', 
-]).then(paths => {
-  fs.mkdirsSync('build/lib/');
-  paths.forEach((item) => {
-    let filename = path.basename(item);
-    fs.copySync(item, 'build/lib/' + filename);
-  });
-});
-//使用统计
-
-console.log('copy files to build/lib done !');
-```
 ### fie.config.js
 ```js
 /**
@@ -582,13 +527,13 @@ module.exports = {
     start: [
       {
         // 执行build目录的copy
-        command: 'node start.js' // 忽略提示信息，可以在此指定 build.js 脚本
+        command: 'NODE_ENV=development node build.js '
       }
     ],
     build: [
       {
         // 同步类库到build/lib目录
-        command: 'node build.js'
+       command: 'NODE_ENV=production node build.js'
       }
     ],
     deploy: [
