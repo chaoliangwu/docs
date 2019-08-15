@@ -617,3 +617,5 @@ lib
    |- react-dom.js
 ```
 其中`qn.js`是经过上述所有`hack`之后的
+
+[文件地址](https://github.com/7revor/fie-react-update-lib)
