@@ -57,6 +57,7 @@ module.exports = {
       '/Notes/': [
         ['publish', '发布宝贝'],
         ['goodsProps', '宝贝属性详解'],
+        ['fieReactUpgrade', 'fie升级React16实录'],
       ],
       /**
        *  // fallback,确保 fallback 侧边栏被最后定义。VuePress 会按顺序遍历侧边栏配置来寻找匹配的配置。
