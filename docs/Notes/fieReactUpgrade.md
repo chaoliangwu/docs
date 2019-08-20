@@ -252,6 +252,8 @@ Uncaught Error: Element ref was specified as a string (.$.$onsale) but no owner 
 2. You may be adding a ref to a component that was not created inside a component's render method
 3. You have multiple copies of React loaded
 ```
+### 4# 解决
+
 这个问题看描述大概是使用了不同的react版本导致的。解决方法笔者也是误打误撞，将`react.addons.TransitionGroup`替换为了第三方库`react-transition-group`就好了。
 
 修改方式：
@@ -295,6 +297,37 @@ e.qnui = t(e.React, e.ReactDOM, e.ReactTransitionGroup.TransitionGroup)
 ```
 
 这里的 e 为全局 window 对象，我们引入`react-transition-group`后，会自动为 window 注入 `ReactTransitionGroup`
+
+
+### 5# 坑
+测试过程中发现这样一个报错
+```js
+Cannot read property 'getContentNode' of null
+```
+
+还是 `Overlay` 的问题。这个错误不是必现的。出现这个错误须符合以下条件
+- 页面出现浮层也就是Overlay
+- Overlay 的点击事件直接跳转到新页面
+- 在新页面上点击就会报错
+
+
+### 5# 解决
+
+具体的源码就不贴了，这里分析一下大体原因：
+
+Overlay的点击事件是通过 `document.addEventlistener` 绑定的。也就是说：
+
+弹层出现后，qnui 为 document 增加 click 监听，当用户点击时，判断目标元素是否为 Overlay。如果是，那么执行点击回调，如果不是，将其隐藏。
+
+当我们路由跳转到新页面后，弹层直接被卸载,而监听没有去除。这样在新页面点击时触发监听导致报错。
+
+源码在 componentWillUnmount 生命周期中有去除监听的操作，但这个地方直接跳转页面会导致代码执行被打断。
+
+一开始想到解决方式是为跳转增加延迟，但考虑到用户体验以及稳定性，决定对组件源码做一下兼容。
+
+- 调用之前判断组件是否已卸载，如果已卸载，停止调用并手动去除监听。
+
+
 
 ## 完成
 打开浏览器刷新页面，看着久违的页面浮现在我们眼前，真的是留下了激动地口水。
