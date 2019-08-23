@@ -197,7 +197,7 @@ this.overlay.addNodeForSafeClick(node)
 
 这个 API 的作用是将元素渲染到父组件之外的DOM,用来做弹窗效果再适合不过。但他毕竟是有前缀`unstable`的，肯定在某些情况下会有问题。
 
-在 react15 中，调用这个方法会直接返回被渲染元素的实例，而 react16 则会返回`null`。
+在 react15 中，调用这个方法会直接返回被渲染元素的实例，而 react16 则会返回 `null`
 
 所以这里会有`Cannot read property 'addNodeForSafeClick' of null`这个错误出现。
 
@@ -213,7 +213,7 @@ React16新增了[`Portals`](https://zh-hans.reactjs.org/docs/portals.html)来更
 
 分析源码发现该API允许接收一个回调函数，回调函数绑定的`this`为被渲染元素实例。而触发回调时使用了一个`flushSyncCallbackQueueImpl`的内部API，意思也就是将所有回调放在微任务队列里统一执行。
 
-大体上理解就是是旧版同步渲染元素，渲染完成后函数返回组件实例，而现在改为了异步渲染，需要在回调里获取实例。
+大体上理解就是是旧版同步渲染后直接返回实例，而现在的异步渲染架构无法立即获取实例，需要借助回调函数。
 
 这样一来思路就清晰了，我们在所有`unstable_renderSubtreeIntoContainer`的地方加入回调，在回调中处理实例绑定，而在所有使用到该实例的地方将其加入宏任务队列延迟调用，问题迎刃而解。
 
