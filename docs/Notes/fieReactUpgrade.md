@@ -2,7 +2,8 @@
 
 工作中两款插件都是使用 [fie-toolkit-qnui](https://github.com/fieteam/fie-toolkit-qnui)套件进行开发。使用中发现了它的弊端：
 
-- 内置的 React 版本是 `15.6`，而现在 React 已经迭代带到 `16.9`。新版的 React 肯定比旧版的更快，更稳定。并且很多优秀的API（比如笔者最喜欢的[Hooks](https://zh-hans.reactjs.org/docs/hooks-intro.html)）老版本自然是无法使用。
+- 内置的 React 版本是 `15.6`，而现在 React 已经迭代带到 `16.9`。
+> React 16 对核心算法进行了重写，引入了代号为 **Fiber** 的异步渲染架构 ， 它比旧版的更快，更稳定。并且加入了很多优秀的API（比如笔者最喜欢的[Hooks](https://zh-hans.reactjs.org/docs/hooks-intro.html)）。
 - fie 在开发环境下仍然使用 `production.min.js` 。这将会忽略 **语法检查** 和 **性能提示**，不利于我们构建更好更快的应用。
 - 生产模式下的`ReactDom`渲染异常报错，没有任何的错误以及堆栈信息，有的只是网页链接，打开后才会显示我们的错误信息。但这对debug没有丝毫帮助。代码这么多，完全不知道是哪里的问题。
 
