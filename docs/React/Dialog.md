@@ -1,6 +1,6 @@
 ## Demo
 
-<Picture src="dialog.jpg" name="组件弹出" width = "300"/>
+<Picture src="dialog.jpg" name="组件弹出11" width = "300"/>
 
 ## 介绍
 最近在进行一个基于Weex的手机端项目，用了阿里的Rax组件，由于资源太少，市面上常见的组件都无法方便快捷的实现弹窗，所以自己从零开始研究了一个。
